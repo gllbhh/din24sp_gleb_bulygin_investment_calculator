@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-	<head> </head>
+	<head>
+		<title>Investment Calculator</title>
+		<link rel="stylesheet" type="text/css" href="src/styles.css" />
+	</head>
 	<body>
 		<div>
 			Initial Invetment, €:
@@ -19,64 +22,7 @@
 			<input type="number" id="interest-rate" />
 		</div>
 		<button onclick="calculateInterest()">Calculate Interest</button>
-		<div id="investmentTable"></div>
-		<script>
-			function calculateInterest() {
-				let initialInvestment =
-					document.getElementById("initial-investment").valueAsNumber;
-				let monthlyContribution = document.getElementById(
-					"monthly-contribution"
-				).valueAsNumber;
-				let investmentPeriod =
-					document.getElementById("investment-period").valueAsNumber;
-				let interestRate =
-					document.getElementById("interest-rate").valueAsNumber;
-				let elements = [
-					initialInvestment,
-					monthlyContribution,
-					investmentPeriod,
-					interestRate,
-				];
-				for (let element of elements) {
-					console.log(element);
-				}
-				let tableDiv = document.getElementById("investmentTable");
-				tableDiv.innerHTML = "";
-				let table = document.createElement("table");
-				tableDiv.appendChild(table);
-				let headerTR = document.createElement("tr");
-				table.appendChild(headerTR);
-				let interestValueHeader = `Investment Value (${interestRate}%)`;
-				let headers = ["Years", interestValueHeader, "Total Contributions"];
-				for (let i = 0; i < headers.length; i++) {
-					let td = document.createElement("td");
-					td.innerHTML = headers[i];
-					headerTR.appendChild(td);
-				}
-				for (let i = 0; i <= investmentPeriod; i++) {
-					let year = i;
-					let investmentValue =
-						initialInvestment *
-							Math.pow(1 + interestRate / 12 / 100, 12 * year) +
-						((monthlyContribution *
-							(Math.pow(1 + 5 / 100 / 12, 12 * year) - 1)) /
-							(interestRate / 100)) *
-							12;
-					let totalContributions =
-						initialInvestment + monthlyContribution * 12 * year;
-					let tr = document.createElement("tr");
-					let td1 = document.createElement("td");
-					td1.innerHTML = `Year ${year}`;
-					let td2 = document.createElement("td");
-					td2.innerHTML = investmentValue.toFixed(2);
-					let td3 = document.createElement("td");
-					td3.innerHTML = totalContributions;
-					tr.appendChild(td1);
-					tr.appendChild(td2);
-					tr.appendChild(td3);
-					table.appendChild(tr);
-				}
-			}
-		</script>
+		<div id="investment-table"></div>
+		<script src="src/script.js"></script>
 	</body>
 </html>

@@ -75,9 +75,7 @@ My implementation of this fomula:
 ```js
 let investmentValue =
 	initialInvestment * Math.pow(1 + interestRate / 12 / 100, 12 * year) +
-	((monthlyContribution * (Math.pow(1 + 5 / 100 / 12, 12 * year) - 1)) /
-		(interestRate / 100)) *
-		12;
+	((monthlyContribution * (Math.pow(1 + 5 / 100 / 12, 12 * year) - 1)) / (interestRate / 100)) * 12;
 ```
 
 But the result did not match the example provided:
@@ -85,4 +83,31 @@ But the result did not match the example provided:
 <p>
     <img src="src/img/initial_results.png" alt="Initial results"><br>
     <em>Figure 2. First results.</em>
+</p>
+
+I did some testing and finally I got an updated formula:
+
+<p>
+    <img src="src/img/updated_formula.png" alt="Updated Formula"><br>
+    <em>Figure 3. Updated formula</em>
+</p>
+ 
+My implementation:
+
+```js
+// function to calculate investment value
+function getInvestmentValue(initialInvestment, monthlyContribution, interestRate, year) {
+	let annualContribution = monthlyContribution * 12;
+	let interestRateDecimal = interestRate / 100;
+	let investmentValue =
+		initialInvestment * Math.pow(1 + interestRateDecimal, year) +
+		(annualContribution * (1 + interestRateDecimal) * (Math.pow(1 + interestRateDecimal, year) - 1)) /
+			interestRateDecimal;
+	return investmentValue;
+}
+```
+
+<p>
+    <img src="src/img/corrected_results.png" alt="Updated Results"><br>
+    <em>Figure 4. Updated results</em>
 </p>
