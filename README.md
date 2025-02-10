@@ -111,3 +111,20 @@ function getInvestmentValue(initialInvestment, monthlyContribution, interestRate
     <img src="src/img/corrected_results.png" alt="Updated Results"><br>
     <em>Figure 4. Updated results</em>
 </p>
+
+After figuring out the results I created a class Investment to handle all the calculations and slightly updated the HTML structure of the page. And updated the styles.css file to inhance the overall look of the page.
+
+Input fields when their type is set to number have attributes like minimum and maximum values and step (amount of increments when pressing up and down buttons). I updated those for all input fields.
+
+I added a value check for following rules:
+
+- Initial investment can not be less than zero
+- Monthly contribution can not be less than zero
+- Investment period can not be less than 1
+
+<p>
+    <img src="src/img/updatedCSS.png" alt="Updated CSS"><br>
+    <em>Figure 5. Updated CSS</em>
+</p>
+
+After doing all of this I have noticed that my year 4 value does not match the example value by 0.03. I am not quite sure why. But otherwise, the calculations are close enough.

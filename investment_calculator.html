@@ -5,24 +5,36 @@
 		<link rel="stylesheet" type="text/css" href="src/styles.css" />
 	</head>
 	<body>
-		<div>
-			Initial Invetment, €:
-			<input type="number" id="initial-investment" />
+		<div class="container">
+			<!-- First row -->
+			<div class="input-row">
+				<div class="input-group">
+					<label for="initial-investment">Initial Investment, €:</label>
+					<input type="number" min="0" step="50" id="initial-investment" />
+				</div>
+				<div class="input-group">
+					<label for="monthly-contribution">Monthly Contribution, €:</label>
+					<input type="number" min="0" step="5" id="monthly-contribution" />
+				</div>
+			</div>
+			<!-- Second row -->
+			<div class="input-row">
+				<div class="input-group">
+					<label for="investment-period">Investment Period, Years:</label>
+					<input type="number" min="1" id="investment-period" />
+				</div>
+				<div class="input-group">
+					<label for="interest-rate">Estimated Interest Rate, %:</label>
+					<input type="number" step="0.1" id="interest-rate" />
+				</div>
+			</div>
+			<!-- Button -->
+			<div class="calculate-button">
+				<button onclick="calculateInterest()">Calculate Interest</button>
+			</div>
+			<!-- Table -->
+			<div id="investment-table"></div>
 		</div>
-		<div>
-			Montyly Contribution, €:
-			<input type="number" id="monthly-contribution" />
-		</div>
-		<div>
-			Investment period, years:
-			<input type="number" id="investment-period" />
-		</div>
-		<div>
-			Estimated Interest Rate, %:
-			<input type="number" id="interest-rate" />
-		</div>
-		<button onclick="calculateInterest()">Calculate Interest</button>
-		<div id="investment-table"></div>
 		<script src="src/script.js"></script>
 	</body>
 </html>
